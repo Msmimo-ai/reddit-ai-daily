@@ -1,7 +1,7 @@
 """
-Reddit AI Agent Daily - Fetch & Generate
-从 Reddit 抓取真实用户分享的 AI Agent 工作应用帖子和评论
-不需要 API Key，使用 Reddit 公开 JSON 接口
+AI Community Daily - Fetch & Generate
+从 Hacker News（官方API）+ Reddit RSS 抓取 AI Agent 工作应用真实案例
+完全免费，无需任何 API Key
 """
 
 import json, os, sys, subprocess, time, re
@@ -14,51 +14,51 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "docs")
 OUTPUT_HTML = os.path.join(OUTPUT_DIR, f"reddit-{TODAY}.html")
 GENERATE_SCRIPT = os.path.join(os.path.dirname(__file__), "generate_page.py")
 
-# 抓取的 subreddit 和搜索词
-SUBREDDITS_TOP = [
-    "ChatGPT", "ClaudeAI", "artificial", "AIAssistants",
-    "automation", "productivity", "nocode", "MachineLearning",
+HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; AICommunityDaily/1.0)"}
+
+# Hacker News 搜索关键词
+HN_QUERIES = [
+    "AI agent workflow automation",
+    "claude copilot agent productivity",
+    "built AI agent replaced task",
+    "LLM automation workflow results",
+    "AI agent work experience",
 ]
 
-SEARCH_QUERIES = [
-    "ai agent work automation",
-    "claude copilot agent workflow",
-    "ai agent replaced automated task",
-    "built agent workflow results",
-    "using AI agent job productivity",
+# Reddit RSS 源（RSS 不受 IP 封锁）
+REDDIT_RSS = [
+    "https://www.reddit.com/r/ChatGPT/search.rss?q=ai+agent+work&sort=top&t=week",
+    "https://www.reddit.com/r/ClaudeAI/top.rss?t=week",
+    "https://www.reddit.com/r/artificial/search.rss?q=agent+workflow&sort=top&t=week",
+    "https://www.reddit.com/r/automation/top.rss?t=week",
+    "https://www.reddit.com/r/MachineLearning/search.rss?q=agent+application&sort=top&t=week",
 ]
-
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; AIAgentDaily/1.0; +https://github.com/Msmimo-ai)",
-    "Accept": "application/json",
-}
 
 SELECTOR_PROMPT = """你是一个专门研究"AI Agent 在实际工作中应用"的社区观察员。
 
-下面是从 Reddit 抓取的帖子和评论候选列表。
+下面是从 Hacker News 和 Reddit 抓取的帖子和评论候选列表。
 
 **任务：精选10条最有价值的真实用户分享**
 
 筛选标准（按重要性排序）：
 1. 用户亲身实践案例：用了什么 AI Agent/工具、做了什么任务、具体怎么操作、得到了什么结果
-2. 有具体细节：工具名称（Claude/GPT/n8n/Zapier/Make/Cursor等）、行业、时间节省或效率提升数据
-3. 讨论热度高（upvotes 多或评论多）
-4. 内容独特，不与其他条目重复
+2. 有具体细节：工具名称（Claude/GPT/n8n/Zapier/Make/Cursor等）、行业、时间节省或效率提升
+3. 讨论热度高（points/upvotes 多）
+4. 内容独特不重复
 
-**过滤掉**：纯理论讨论、新手提问（没有实践内容）、广告/推广、重复内容。
+**过滤掉**：纯理论讨论、新手提问、广告推广、重复内容。
 
-对每条精选内容，输出 JSON 数组（不加```标记），字段：
-
-- title_zh: 中文标题（25字以内，直接描述这个用户做了什么）
-- original_title: 原标题（英文，保持原文）
-- content_zh: 中文摘要（150-200字，忠实翻译核心内容：用了什么工具、做了什么、怎么做的、结果如何）
-- tools: 提到的工具/平台数组，如["Claude","n8n","Zapier"]
-- use_case: 使用场景，如"数据处理"/"邮件自动化"/"代码生成"/"客服"/"文档整理"等
-- upvotes: 原帖点赞数（整数）
-- comments: 原帖评论数（整数）
-- subreddit: 来自哪个 subreddit，如"r/ChatGPT"
+输出 JSON 数组（不加```标记），每条字段：
+- title_zh: 中文标题（25字以内，描述用户做了什么）
+- original_title: 原标题（英文）
+- content_zh: 中文摘要（150-200字，翻译核心内容：工具、做法、结果）
+- tools: 提到的工具数组，如["Claude","n8n","Zapier"]
+- use_case: 使用场景，如"数据处理"/"邮件自动化"/"代码生成"/"文档整理"等
+- points: 热度分数（整数，没有填0）
+- comments: 评论数（整数）
+- source: 来源平台，如"Hacker News"或"Reddit r/ChatGPT"
 - type: "post"或"comment"
-- url: 原帖/评论的完整 Reddit 链接（必须是真实链接）
+- url: 原帖完整链接（必须真实）
 - pub_time: 发布时间 YYYY-MM-DD
 
 候选内容：
@@ -67,146 +67,144 @@ SELECTOR_PROMPT = """你是一个专门研究"AI Agent 在实际工作中应用"
 只输出 JSON 数组，不要解释。"""
 
 
-def fetch_subreddit_top(subreddit, limit=15):
-    """抓取 subreddit 当日热帖"""
-    url = f"https://www.reddit.com/r/{subreddit}/top.json?t=week&limit={limit}"
+def fetch_hn_search(query, limit=8):
+    """从 Hacker News Algolia 搜索 API 抓取"""
+    url = f"https://hn.algolia.com/api/v1/search?query={requests.utils.quote(query)}&tags=story&hitsPerPage={limit}&numericFilters=created_at_i>{int((datetime.now(timezone.utc) - timedelta(days=14)).timestamp())}"
     try:
         r = requests.get(url, headers=HEADERS, timeout=15)
         if r.status_code != 200:
-            print(f"  r/{subreddit} HTTP {r.status_code}", file=sys.stderr)
             return []
-        data = r.json()
-        posts = []
-        for p in data.get("data", {}).get("children", []):
-            d = p["data"]
-            # 只要有实质内容的帖子
-            body = d.get("selftext", "").strip()
-            if len(body) < 50 and not d.get("title", ""):
-                continue
-            posts.append({
+        hits = r.json().get("hits", [])
+        results = []
+        for h in hits:
+            story_id = h.get("objectID", "")
+            results.append({
                 "type": "post",
-                "title": d.get("title", ""),
-                "body": body[:500],
-                "subreddit": f"r/{subreddit}",
-                "upvotes": d.get("ups", 0),
-                "comments": d.get("num_comments", 0),
-                "url": f"https://reddit.com{d.get('permalink', '')}",
-                "created": datetime.fromtimestamp(d.get("created_utc", 0), tz=timezone.utc).strftime("%Y-%m-%d"),
-                "id": d.get("id", ""),
+                "title": h.get("title", ""),
+                "body": h.get("story_text") or h.get("comment_text") or "",
+                "source": "Hacker News",
+                "points": h.get("points", 0) or 0,
+                "comments": h.get("num_comments", 0) or 0,
+                "url": h.get("url") or f"https://news.ycombinator.com/item?id={story_id}",
+                "hn_url": f"https://news.ycombinator.com/item?id={story_id}",
+                "created": datetime.fromtimestamp(h.get("created_at_i", 0), tz=timezone.utc).strftime("%Y-%m-%d"),
+                "id": story_id,
             })
-        return posts
+        return results
     except Exception as e:
-        print(f"  r/{subreddit} 失败: {e}", file=sys.stderr)
+        print(f"  HN搜索失败 [{query[:30]}]: {e}", file=sys.stderr)
         return []
 
 
-def fetch_reddit_search(query, limit=10):
-    """全站搜索"""
-    url = f"https://www.reddit.com/search.json?q={requests.utils.quote(query)}&sort=top&t=week&limit={limit}"
+def fetch_hn_top_comments(story_id, limit=3):
+    """抓取 HN 帖子的热门评论"""
+    url = f"https://hn.algolia.com/api/v1/search?tags=comment,story_{story_id}&hitsPerPage={limit}"
     try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
+        r = requests.get(url, headers=HEADERS, timeout=10)
         if r.status_code != 200:
             return []
-        data = r.json()
-        posts = []
-        for p in data.get("data", {}).get("children", []):
-            d = p["data"]
-            body = d.get("selftext", "").strip()
-            posts.append({
-                "type": "post",
-                "title": d.get("title", ""),
-                "body": body[:500],
-                "subreddit": f"r/{d.get('subreddit', '')}",
-                "upvotes": d.get("ups", 0),
-                "comments": d.get("num_comments", 0),
-                "url": f"https://reddit.com{d.get('permalink', '')}",
-                "created": datetime.fromtimestamp(d.get("created_utc", 0), tz=timezone.utc).strftime("%Y-%m-%d"),
-                "id": d.get("id", ""),
-            })
-        return posts
-    except Exception as e:
-        print(f"  搜索 [{query[:30]}] 失败: {e}", file=sys.stderr)
-        return []
-
-
-def fetch_top_comments(post_url, post_id, subreddit_name, limit=3):
-    """抓取帖子下热门评论"""
-    url = f"https://www.reddit.com/r/{subreddit_name}/comments/{post_id}.json?sort=top&limit={limit}"
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
-        if r.status_code != 200:
-            return []
-        data = r.json()
-        comments = []
-        if len(data) < 2:
-            return []
-        for c in data[1].get("data", {}).get("children", [])[:limit]:
-            d = c.get("data", {})
-            body = d.get("body", "").strip()
-            if len(body) < 100:
+        hits = r.json().get("hits", [])
+        results = []
+        for h in hits:
+            body = h.get("comment_text", "").strip()
+            body_clean = re.sub(r"<[^>]+>", " ", body).strip()
+            if len(body_clean) < 80:
                 continue
-            comments.append({
+            results.append({
                 "type": "comment",
-                "title": f"Comment on: {data[0]['data']['children'][0]['data'].get('title', '')}",
-                "body": body[:600],
-                "subreddit": f"r/{subreddit_name}",
-                "upvotes": d.get("ups", 0),
+                "title": f"HN Comment: {h.get('story_title', '')}",
+                "body": body_clean[:600],
+                "source": "Hacker News",
+                "points": h.get("points", 0) or 0,
                 "comments": 0,
-                "url": f"https://reddit.com{d.get('permalink', '')}",
-                "created": datetime.fromtimestamp(d.get("created_utc", 0), tz=timezone.utc).strftime("%Y-%m-%d"),
-                "id": d.get("id", ""),
+                "url": f"https://news.ycombinator.com/item?id={h.get('objectID','')}",
+                "hn_url": f"https://news.ycombinator.com/item?id={h.get('objectID','')}",
+                "created": datetime.fromtimestamp(h.get("created_at_i", 0), tz=timezone.utc).strftime("%Y-%m-%d"),
+                "id": h.get("objectID", ""),
             })
-        return comments
+        return results
     except Exception:
         return []
 
 
+def fetch_reddit_rss(feed_url):
+    """通过 RSS 抓取 Reddit（不受 IP 封锁）"""
+    try:
+        import feedparser
+        resp = requests.get(feed_url, headers=HEADERS, timeout=15)
+        if resp.status_code != 200:
+            print(f"  Reddit RSS {resp.status_code}: {feed_url[:60]}", file=sys.stderr)
+            return []
+        feed = feedparser.parse(resp.content)
+        results = []
+        for entry in feed.entries[:10]:
+            url = entry.get("link", "")
+            title = entry.get("title", "")
+            summary = entry.get("summary", "")
+            summary_clean = re.sub(r"<[^>]+>", " ", summary).strip()[:500]
+            # 从 URL 提取 subreddit
+            sub_match = re.search(r'/r/(\w+)/', url)
+            subreddit = f"Reddit r/{sub_match.group(1)}" if sub_match else "Reddit"
+            results.append({
+                "type": "post",
+                "title": title,
+                "body": summary_clean,
+                "source": subreddit,
+                "points": 0,
+                "comments": 0,
+                "url": url,
+                "created": TODAY,
+                "id": url,
+            })
+        return results
+    except Exception as e:
+        print(f"  Reddit RSS 失败: {e}", file=sys.stderr)
+        return []
+
+
 def collect_all():
-    all_items = []
-    seen_ids = set()
+    all_items, seen_ids = [], set()
 
-    # 1. 从各 subreddit 抓热帖
-    for sub in SUBREDDITS_TOP:
-        posts = fetch_subreddit_top(sub, limit=12)
-        new_posts = [p for p in posts if p["id"] not in seen_ids]
-        for p in new_posts:
-            seen_ids.add(p["id"])
-        all_items.extend(new_posts)
-        print(f"  r/{sub}: {len(new_posts)} 条")
-        time.sleep(1)  # 礼貌延迟，避免被限速
+    # 1. Hacker News 搜索
+    print("抓取 Hacker News...")
+    for query in HN_QUERIES:
+        posts = fetch_hn_search(query, limit=8)
+        new = [p for p in posts if p["id"] not in seen_ids]
+        for p in new: seen_ids.add(p["id"])
+        all_items.extend(new)
+        print(f"  HN [{query[:25]}]: {len(new)} 条")
+        time.sleep(0.5)
 
-    # 2. 全站搜索
-    for query in SEARCH_QUERIES:
-        posts = fetch_reddit_search(query, limit=8)
-        new_posts = [p for p in posts if p["id"] not in seen_ids]
-        for p in new_posts:
-            seen_ids.add(p["id"])
-        all_items.extend(new_posts)
-        time.sleep(1.5)
+    # 2. HN 热帖评论
+    top_hn = sorted([i for i in all_items if i["source"] == "Hacker News"],
+                    key=lambda x: x["points"], reverse=True)[:5]
+    for post in top_hn:
+        comments = fetch_hn_top_comments(post["id"], limit=2)
+        new = [c for c in comments if c["id"] not in seen_ids]
+        for c in new: seen_ids.add(c["id"])
+        all_items.extend(new)
+        time.sleep(0.3)
 
-    # 3. 为点赞最高的帖子抓热门评论
-    top_posts = sorted(all_items, key=lambda x: x["upvotes"], reverse=True)[:5]
-    for post in top_posts:
-        sub_name = post["subreddit"].replace("r/", "")
-        post_id = post["id"]
-        comments = fetch_top_comments(post["url"], post_id, sub_name, limit=2)
-        new_comments = [c for c in comments if c["id"] not in seen_ids]
-        for c in new_comments:
-            seen_ids.add(c["id"])
-        all_items.extend(new_comments)
+    # 3. Reddit RSS（备用源）
+    print("抓取 Reddit RSS...")
+    for rss_url in REDDIT_RSS:
+        posts = fetch_reddit_rss(rss_url)
+        new = [p for p in posts if p["id"] not in seen_ids]
+        for p in new: seen_ids.add(p["id"])
+        all_items.extend(new)
+        print(f"  {len(new)} 条")
         time.sleep(1)
 
-    # 按热度排序
-    all_items.sort(key=lambda x: x["upvotes"] + x["comments"] * 2, reverse=True)
+    all_items.sort(key=lambda x: x["points"] + x["comments"] * 2, reverse=True)
     print(f"共收集 {len(all_items)} 条候选内容")
     return all_items
 
 
 def format_candidates(items):
     lines = []
-    for i, it in enumerate(items[:60], 1):  # 最多送60条给LLM
+    for i, it in enumerate(items[:60], 1):
         lines.append(
-            f"{i}. [{it['subreddit']}] {it['type'].upper()} | 👍{it['upvotes']} 💬{it['comments']} | {it['created']}\n"
+            f"{i}. [{it['source']}] {it['type'].upper()} | 👍{it['points']} 💬{it['comments']} | {it['created']}\n"
             f"   标题: {it['title']}\n"
             f"   内容: {it['body'][:300]}\n"
             f"   链接: {it['url']}"
@@ -226,15 +224,13 @@ def clean_json(raw):
 def process_with_groq(raw_items, retry=3):
     client = Groq(api_key=os.environ["GROQ_API_KEY"])
     prompt = SELECTOR_PROMPT.format(candidates=format_candidates(raw_items))
-
     for attempt in range(1, retry + 1):
         try:
             print(f"调用 Groq API（第{attempt}次）...")
             resp = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.2,
-                max_tokens=4096,
+                temperature=0.2, max_tokens=4096,
             )
             raw = clean_json(resp.choices[0].message.content)
             print(f"输出前200字: {raw[:200]}")
@@ -279,14 +275,14 @@ def update_index():
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Reddit AI Agent 日报</title>
+<title>AI 社区实战日报</title>
 <meta http-equiv="refresh" content="0;url=reddit-{TODAY}.html">
 <style>body{{font-family:-apple-system,"PingFang SC",sans-serif;max-width:480px;margin:60px auto;padding:0 20px;color:#1e293b}}
 h1{{font-size:24px}}p{{color:#64748b}}ul{{list-style:none;padding:0}}li{{margin:8px 0}}
 a{{color:#ff4500;text-decoration:none}}a:hover{{text-decoration:underline}}</style>
 </head><body>
-<h1>🤖 Reddit AI Agent 日报</h1>
-<p>真实用户分享 AI Agent 工作应用案例，正在跳转…</p>
+<h1>🤖 AI 社区实战日报</h1>
+<p>Hacker News + Reddit 真实用户 AI Agent 工作案例，正在跳转…</p>
 <p style="font-size:13px;color:#94a3b8">如未跳转，<a href="reddit-{TODAY}.html">点击这里</a></p>
 <h2 style="font-size:16px;margin-top:32px">历史归档</h2>
 <ul>{archive}</ul>
@@ -297,7 +293,7 @@ a{{color:#ff4500;text-decoration:none}}a:hover{{text-decoration:underline}}</sty
 
 
 def main():
-    print(f"=== Reddit AI Agent Daily {TODAY} ===")
+    print(f"=== AI Community Daily {TODAY} ===")
     if not os.environ.get("GROQ_API_KEY"):
         print("ERROR: 未设置 GROQ_API_KEY", file=sys.stderr); sys.exit(1)
     raw = collect_all()
