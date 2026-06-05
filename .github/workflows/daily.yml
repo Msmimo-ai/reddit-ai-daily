@@ -1,0 +1,58 @@
+name: Reddit AI Agent Daily
+
+on:
+  schedule:
+    # 夏令时 EDT（3月~11月）：06:00 蒙特利尔 = 10:00 UTC
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install groq requests
+      - name: Fetch Reddit & Generate
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PYTHONUTF8: "1"
+        run: python scripts/fetch_reddit.py
+      - name: Commit and push
+        run: |
+          git config user.name "Reddit AI Bot"
+          git config user.email "actions@github.com"
+          git add docs/
+          git diff --cached --quiet || git commit -m "🤖 Reddit AI Agent 日报 $(date +%Y-%m-%d)"
+          git push
+
+  retry-on-failure:
+    runs-on: ubuntu-latest
+    needs: generate
+    if: failure()
+    timeout-minutes: 15
+    steps:
+      - run: sleep 300
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install groq requests
+      - name: Retry
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PYTHONUTF8: "1"
+        run: python scripts/fetch_reddit.py
+      - name: Commit and push
+        run: |
+          git config user.name "Reddit AI Bot"
+          git config user.email "actions@github.com"
+          git add docs/
+          git diff --cached --quiet || git commit -m "🤖 Reddit AI Agent 日报 $(date +%Y-%m-%d)（重试）"
+          git push
