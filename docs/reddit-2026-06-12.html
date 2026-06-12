@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-06-12</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-06-12</div>
+      <div>真实案例 10 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">Fable 5 <b>4</b></span><span class="top-tool-chip">Claude Code <b>3</b></span><span class="top-tool-chip">Claude <b>2</b></span><span class="top-tool-chip">Rayline <b>1</b></span><span class="top-tool-chip">Agents <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Rayline 路由 Claude Code 子代理</h2>
+        <p class="original-title">Show HN: Rayline routes Claude Code subagents to on-device and cheaper models</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Rayline</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code</span></div>
+        <p class="card-content">Rayline 是一个 Claude Code 兼容的 LLM 网关，用于拦截和重写 Claude Code 的内部路由，允许用户将子代理调用路由到不同的模型。例如，可以在 Opus 上运行主代理，在云托管的 Opus 上运行一些子代理。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-08</span>
+          <a class="btn-reddit" href="https://rayline.ai/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Agents 运行任意编码代理</h2>
+        <p class="original-title">Show HN: Agents, run any coding agent on your subscription not API costs</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Agents</span></div>
+        <p class="card-content">Agents 是一个工具链，允许用户在自己的订阅中运行任意编码代理，而无需支付 API 成本。它支持多种代理，包括 Claude 和其他编码代理。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-05-31</span>
+          <a class="btn-reddit" href="https://agents-cli.sh" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Claude 构建 iOS 应用</h2>
+        <p class="original-title">I’ve built 4 iOS apps with Claude. 5 more in progress. Zero users. Zero revenue. Let me save you some time.</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">应用开发</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#f9731620;color:#f97316;border:1px solid #f9731640">Claude</span></div>
+        <p class="card-content">使用 Claude 可以快速构建 iOS 应用，包括 SwiftUI、StoreKit、widgets 和 Live Activities。作者已经构建了 4 个应用，并有 5 个应用正在开发中。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1txkn86/ive_built_4_ios_apps_with_claude_5_more_in/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Fable 5 获取伴侣</h2>
+        <p class="original-title">Using Fable to get me a wife in 6 Months </p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">个人关系</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Fable 5</span></div>
+        <p class="card-content">作者计划使用 Fable 5 在 6 个月内找到伴侣，并将整个过程直播。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u1us8y/using_fable_to_get_me_a_wife_in_6_months_ama/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Claude Fable 5 介绍</h2>
+        <p class="original-title">Introducing Claude Fable 5</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Fable 5</span></div>
+        <p class="card-content">Fable 5 是一个 Mythos 类型的模型，安全适用于一般使用。其能力超过了之前任何公开的模型，在软件工程、知识工作等方面表现出色。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u1b22l/introducing_claude_fable_5/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Claude Code 的最佳实践</h2>
+        <p class="original-title">Know the Claude Rules</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code</span></div>
+        <p class="card-content">作者分享了使用 Claude Code 的最佳实践，包括了解 Claude 的规则和限制。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u2qvrn/know_the_claude_rules/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Claude Code 的终极目标</h2>
+        <p class="original-title">Claude Code Endgame</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code</span></div>
+        <p class="card-content">作者讨论了 Claude Code 的终极目标和未来发展方向。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u0e2pp/claude_code_endgame/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Claude 的个人经历</h2>
+        <p class="original-title">I started responding to messages from coworkers like Claude</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">个人关系</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#f9731620;color:#f97316;border:1px solid #f9731640">Claude</span></div>
+        <p class="card-content">作者分享了使用 Claude 的个人经历，包括如何使用 Claude 回复同事的消息。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1tz1tzv/i_started_responding_to_messages_from_coworkers/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Claude Fable 5 的局限性</h2>
+        <p class="original-title">Claude Fable 5 feels less like a model launch and more like a preview of AI inequality</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Fable 5</span></div>
+        <p class="card-content">作者讨论了 Claude Fable 5 的局限性和潜在的 AI 不平等问题。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u1fsdi/claude_fable_5_feels_less_like_a_model_launch_and/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">AGI 的现状</h2>
+        <p class="original-title">AGI is here (Fable 5 suggest me to Drive to the car Wash)</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Fable 5</span></div>
+        <p class="card-content">作者讨论了 AGI 的现状和 Fable 5 的能力。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u1bmim/agi_is_here_fable_5_suggest_me_to_drive_to_the/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
