@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-06-13</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-06-13</div>
+      <div>真实案例 10 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">Claude Code <b>2</b></span><span class="top-tool-chip">Rayline <b>1</b></span><span class="top-tool-chip">Artie <b>1</b></span><span class="top-tool-chip">Eatmydata.ai <b>1</b></span><span class="top-tool-chip">Agents Remember <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Rayline 将 Claude Code 子代理路由到本地设备和更便宜的模型</h2>
+        <p class="original-title">Show HN: Rayline routes Claude Code subagents to on-device and cheaper models</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Rayline</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code</span></div>
+        <p class="card-content">Rayline 是一个 Claude Code 兼容的 LLM 网关，拦截和覆盖 Claude Code 的内部路由，允许您将子代理调用路由到不同的模型。例如，您可以在 Opus 上运行主代理，在云托管的 Opus 上运行一些子代理。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-10</span>
+          <a class="btn-reddit" href="https://rayline.ai/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 6</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Artie 实现实时数据复制</h2>
+        <p class="original-title">Show HN: Artie – Real-time data replication to your warehouse, now self-serve</p>
+        <div class="use-case-badge" style="background:#3b82f620;color:#3b82f6">数据处理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Artie</span></div>
+        <p class="card-content">Artie 是一个实时数据复制工具，可以在 60 秒内将源数据库中的每个行级更改捕获并流式传输到您的仓库。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-10</span>
+          <a class="btn-reddit" href="https://www.artie.com" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Eatmydata.ai 实现本地优先的问答和仪表盘生成</h2>
+        <p class="original-title">Show HN: Eatmydata.ai – Local-First Question-to-SQL-to-Dashboard AI</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">数据分析</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Eatmydata.ai</span></div>
+        <p class="card-content">Eatmydata.ai 是一个本地优先的问答和仪表盘生成工具，允许您在浏览器中分析数据而无需将其发送到服务器。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-10</span>
+          <a class="btn-reddit" href="https://eatmydata.ai/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Agents Remember 实现 Git 感知的编码代理记忆</h2>
+        <p class="original-title">Show HN: Agents Remember – Git-aware memory for coding agents</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Agents Remember</span></div>
+        <p class="card-content">Agents Remember 是一个 Git 感知的编码代理记忆工具，允许代理记住您的仓库并在需要时检索信息。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-05</span>
+          <a class="btn-reddit" href="https://github.com/Foxfire1st/agents-remember-md" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Circus Chief 管理编码代理会话</h2>
+        <p class="original-title">Show HN: Circus Chief – Claude Code, Codex, and Gemini from Your Phone</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Circus Chief</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Codex</span><span class="tool-chip" style="background:#4285f420;color:#4285f4;border:1px solid #4285f440">Gemini</span></div>
+        <p class="card-content">Circus Chief 是一个用于管理编码代理会话的工具，支持 Claude Code、OpenAI Codex 和 Google Gemini。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-02</span>
+          <a class="btn-reddit" href="https://github.com/ferrislucas/Circus-Chief" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 76</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Hyper 实现公司级的代理开发</h2>
+        <p class="original-title">Launch HN: Hyper (YC P26) – Company brain to power agentic development</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">代理开发</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hyper</span></div>
+        <p class="card-content">Hyper 是一个公司级的代理开发平台，允许您创建和管理代理以自动化任务和流程。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-03</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48387095" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 21</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 BitBoard 实现代理分析工作空间</h2>
+        <p class="original-title">Launch HN: BitBoard (YC P25) – Analytics Workspace for Agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">数据分析</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">BitBoard</span></div>
+        <p class="card-content">BitBoard 是一个代理分析工作空间，允许您创建和管理代理以分析数据和生成见解。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://bitboard.work" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 28</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Expanse 解锁浪费的 GPU 容量</h2>
+        <p class="original-title">Launch HN: Expanse (YC P26) – Unlock Wasted GPU Capacity</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">GPU 优化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Expanse</span></div>
+        <p class="card-content">Expanse 是一个用于解锁浪费的 GPU 容量的工具，允许您优化 GPU 集群的性能。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-01</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48356312" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 DashVox 实现语音控制的编码代理</h2>
+        <p class="original-title">Show HN: Voice control coding agents on your machine via smartwatch / CarPlay</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">DashVox</span></div>
+        <p class="card-content">DashVox 是一个语音控制的编码代理工具，允许您使用智能手表或 CarPlay 控制编码代理。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-01</span>
+          <a class="btn-reddit" href="https://dashvox.ai" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用 Claude Fable 5 实现 AI 不平等的预览</h2>
+        <p class="original-title">Claude Fable 5 feels less like a model launch and more like a preview of AI inequality</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 研究</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Fable 5</span></div>
+        <p class="card-content">Claude Fable 5 是一个 AI 模型，允许您预览 AI 不平等的未来。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-13</span>
+          <a class="btn-reddit" href="https://www.reddit.com/r/ClaudeAI/comments/1u1fsdi/claude_fable_5_feels_less_like_a_model_launch_and/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
