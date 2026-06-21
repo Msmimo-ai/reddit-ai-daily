@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-06-21</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-06-21</div>
+      <div>真实案例 9 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">TesterArmy <b>2</b></span><span class="top-tool-chip">BitBoard <b>1</b></span><span class="top-tool-chip">Artie <b>1</b></span><span class="top-tool-chip">Rayline <b>1</b></span><span class="top-tool-chip">Claude Code <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 68</span>
+          </div>
+        </div>
+        <h2 class="card-title">TesterArmy 测试平台</h2>
+        <p class="original-title">Launch HN: TesterArmy (YC P26) – Agents that test web and mobile apps</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">应用程序测试</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">TesterArmy</span></div>
+        <p class="card-content">TesterArmy 是一个测试平台，使用 AI Agent 进行测试。它可以运行端到端的检查，并在生产环境中进行测试。开发者可以使用 TesterArmy 来测试他们的应用程序，减少手动测试的时间和成本。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-18</span>
+          <a class="btn-reddit" href="https://tester.army" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 25</span>
+          </div>
+        </div>
+        <h2 class="card-title">BitBoard 分析工作空间</h2>
+        <p class="original-title">Launch HN: BitBoard (YC P25) – Analytics Workspace for Agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">数据分析</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">BitBoard</span></div>
+        <p class="card-content">BitBoard 是一个分析工作空间，使用 AI Agent 进行数据分析。它提供了基础设施和可视化层来分析数据。开发者可以使用 BitBoard 来分析他们的数据，并做出更好的决策。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-12</span>
+          <a class="btn-reddit" href="https://bitboard.work" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 6</span>
+          </div>
+        </div>
+        <h2 class="card-title">Artie 实时数据复制</h2>
+        <p class="original-title">Show HN: Artie – Real-time data replication to your warehouse, now self-serve</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">数据复制</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Artie</span></div>
+        <p class="card-content">Artie 是一个实时数据复制工具，使用 AI Agent 进行数据复制。它可以在 60 秒内将数据复制到仓库中。开发者可以使用 Artie 来复制他们的数据，并进行实时分析。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-10</span>
+          <a class="btn-reddit" href="https://www.artie.com" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 9</span>
+          </div>
+        </div>
+        <h2 class="card-title">Rayline 路由 Claude Code 子代理</h2>
+        <p class="original-title">Show HN: Rayline routes Claude Code subagents to on-device and cheaper models</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">子代理路由</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Rayline</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code</span></div>
+        <p class="card-content">Rayline 是一个路由工具，使用 AI Agent 进行 Claude Code 子代理路由。它可以将子代理路由到设备上或更便宜的模型中。开发者可以使用 Rayline 来减少他们的成本，并提高他们的效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-08</span>
+          <a class="btn-reddit" href="https://rayline.ai" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 1</span>
+          </div>
+        </div>
+        <h2 class="card-title">Ferrix AI 代理产品管理</h2>
+        <p class="original-title">Show HN: Ferrix AI – Agentic Product Management Platform</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">产品管理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Ferrix AI</span></div>
+        <p class="card-content">Ferrix AI 是一个代理产品管理平台，使用 AI Agent 进行产品管理。它可以帮助开发者决定什么产品要建造，并优化他们的产品开发流程。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-17</span>
+          <a class="btn-reddit" href="https://ferrix.ai" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">AutomatiQ 反向工程代理</h2>
+        <p class="original-title">Show HN: I built a reverse-engineering agent for the web</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">反向工程</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">AutomatiQ</span></div>
+        <p class="card-content">AutomatiQ 是一个反向工程代理，使用 AI Agent 进行反向工程。它可以帮助开发者创建和维护他们的脚本，并减少他们的工作量。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-18</span>
+          <a class="btn-reddit" href="https://github.com/StoneSteel27/AutomatiQ" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Konxios 本地 AI 操作系统</h2>
+        <p class="original-title">Show HN: Konxios a local first AI OS that connects LM Studio, Ollama and cloud</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">操作系统</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Konxios</span></div>
+        <p class="card-content">Konxios 是一个本地 AI 操作系统，使用 AI Agent 进行操作。它可以连接 LM Studio、Ollama 和云端，并提供一个统一的界面来管理开发者的工具和服务。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-19</span>
+          <a class="btn-reddit" href="https://konxios.com" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 6</span>
+          </div>
+        </div>
+        <h2 class="card-title">Persona.js 代理 UI 库</h2>
+        <p class="original-title">Show HN: Persona.js – a vanilla-JS agent UI library with native WebMCP (MIT)</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">UI 开发</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Persona.js</span></div>
+        <p class="card-content">Persona.js 是一个代理 UI 库，使用 AI Agent 进行 UI 开发。它可以帮助开发者创建和管理他们的 UI 组件，并提供一个统一的界面来管理他们的应用程序。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-10</span>
+          <a class="btn-reddit" href="https://www.persona-chat.dev" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">💬 评论</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">TesterArmy 评论</h2>
+        <p class="original-title">HN Comment: Launch HN: TesterArmy (YC P26) – Agents that test web and mobile apps</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">应用程序测试</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">TesterArmy</span><span class="tool-chip" style="background:#f9731620;color:#f97316;border:1px solid #f9731640">Claude</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hubspot</span></div>
+        <p class="card-content">TesterArmy 评论者提到，他们使用 Claude 和 Hubspot 来进行测试，并发现它很有价值。他们还提到，使用 AI Agent 来进行测试可以减少他们的成本，并提高他们的效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-20</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48611092" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
