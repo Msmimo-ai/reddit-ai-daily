@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-07-02</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-07-02</div>
+      <div>真实案例 9 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">TesterArmy <b>1</b></span><span class="top-tool-chip">Claude <b>1</b></span><span class="top-tool-chip">Hubspot <b>1</b></span><span class="top-tool-chip">Appaca <b>1</b></span><span class="top-tool-chip">Valmis <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 69</span>
+          </div>
+        </div>
+        <h2 class="card-title">TesterArmy：测试Web和移动应用的智能代理</h2>
+        <p class="original-title">Launch HN: TesterArmy (YC P26) – Agents that test web and mobile apps</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">自动化测试</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">TesterArmy</span></div>
+        <p class="card-content">TesterArmy是一个智能测试平台，使用代理来测试Web和移动应用。该平台可以自动化测试流程，减少手动测试的时间和成本。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-18</span>
+          <a class="btn-reddit" href="https://tester.army" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">💬 评论</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用Claude和Hubspot进行数据处理</h2>
+        <p class="original-title">HN Comment: Launch HN: TesterArmy (YC P26) – Agents that test web and mobile apps</p>
+        <div class="use-case-badge" style="background:#3b82f620;color:#3b82f6">数据处理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#f9731620;color:#f97316;border:1px solid #f9731640">Claude</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hubspot</span></div>
+        <p class="card-content">用户使用Claude和Hubspot进行数据处理，包括实体链接、数据清理和一般数据处理。用户认为Claude在这些方面非常有价值。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-20</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48611092" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 11</span>
+          </div>
+        </div>
+        <h2 class="card-title">Appaca：AI工作空间</h2>
+        <p class="original-title">Show HN: Appaca – AI Workspace for Operators</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI开发和部署</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Appaca</span></div>
+        <p class="card-content">Appaca是一个AI工作空间，旨在帮助开发人员和机构更快地为客户交付产品。该平台提供了一系列工具和功能来支持AI开发和部署。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-26</span>
+          <a class="btn-reddit" href="https://www.appaca.ai" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Valmis：安全的AI代理平台</h2>
+        <p class="original-title">Show HN: Valmis, an OpenClaw alternative built for work, with security in mind</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">安全的AI代理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Valmis</span></div>
+        <p class="card-content">Valmis是一个安全的AI代理平台，旨在为工作提供安全的AI代理解决方案。该平台使用容器化技术来确保AI代理的安全性和隔离性。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-30</span>
+          <a class="btn-reddit" href="https://github.com/valmishq/valmis" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 19</span>
+          </div>
+        </div>
+        <h2 class="card-title">Persona.js：智能UI库</h2>
+        <p class="original-title">Show HN: Persona.js – a vanilla-JS agent UI library with native WebMCP (MIT)</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">智能UI</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Persona.js</span></div>
+        <p class="card-content">Persona.js是一个智能UI库，旨在为Web开发提供智能UI解决方案。该库使用vanilla JS和WebMCP技术来提供高性能和安全的UI组件。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-20</span>
+          <a class="btn-reddit" href="https://github.com/runtypelabs/persona" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 3</span>
+          </div>
+        </div>
+        <h2 class="card-title">Agnes AI：多模态API</h2>
+        <p class="original-title">Show HN: Agnes AI – Free multimodal API (text, image, video), OpenAI-compatible</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">多模态AI</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Agnes AI</span></div>
+        <p class="card-content">Agnes AI是一个多模态API，旨在为开发人员提供多模态AI解决方案。该API支持文本、图像和视频等多种数据类型，并兼容OpenAI。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-24</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48657403" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 1</span>
+          </div>
+        </div>
+        <h2 class="card-title">Margarita：编程语言</h2>
+        <p class="original-title">Show HN: Margarita - Programming language for Agents using Markdown-ish syntax</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI编程</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Margarita</span></div>
+        <p class="card-content">Margarita是一个编程语言，旨在为AI代理提供简单和高效的编程解决方案。该语言使用Markdown-ish语法来提供易于使用的编程体验。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-02</span>
+          <a class="btn-reddit" href="https://www.margarita.run" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Videopython：视频处理库</h2>
+        <p class="original-title">Show HN: Videopython – local-first video processing, editing and AI workflows</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">视频处理和编辑</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Videopython</span></div>
+        <p class="card-content">Videopython是一个视频处理库，旨在为开发人员提供本地视频处理和编辑解决方案。该库支持AI工作流和视频编辑等功能。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-23</span>
+          <a class="btn-reddit" href="https://github.com/bartwojtowicz/videopython" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Konxios：本地AI操作系统</h2>
+        <p class="original-title">Show HN: Konxios a local first AI OS that connects LM Studio, Ollama and cloud</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">本地AI</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Konxios</span></div>
+        <p class="card-content">Konxios是一个本地AI操作系统，旨在为开发人员提供本地AI解决方案。该系统支持LM Studio、Ollama和云等多种AI平台。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-19</span>
+          <a class="btn-reddit" href="https://konxios.com" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
