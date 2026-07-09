@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-07-09</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-07-09</div>
+      <div>真实案例 9 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">Appaca <b>1</b></span><span class="top-tool-chip">Margarita <b>1</b></span><span class="top-tool-chip">Valmis <b>1</b></span><span class="top-tool-chip">Keyhole <b>1</b></span><span class="top-tool-chip">Doppler <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 11</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用Appaca构建AI工作空间</h2>
+        <p class="original-title">Show HN: Appaca – AI Workspace for Operators</p>
+        <div class="use-case-badge" style="background:#8b5cf620;color:#8b5cf6">代码生成</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Appaca</span></div>
+        <p class="card-content">Appaca是一个AI工作空间，允许开发者和机构更快地为客户交付产品。它是一个无代码平台，能够生成代码，并且具有多种商业和生产力集成。该系统旨在提高安全性，AI代理运行在隔离容器中，确保AI永远无法访问API凭证或其他敏感信息。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-26</span>
+          <a class="btn-reddit" href="https://www.appaca.ai/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 4</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用Margarita构建AI代理</h2>
+        <p class="original-title">Show HN: Margarita - Programming language for Agents using Markdown-ish syntax</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI工作流</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Margarita</span></div>
+        <p class="card-content">Margarita是一种用于AI代理的编程语言，使用类似Markdown的语法。它旨在解决AI工作流和技能库中的确定性问题。该语言允许开发者使用简单的语法定义AI代理的行为，并且能够与其他工具和服务集成。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-02</span>
+          <a class="btn-reddit" href="https://www.margarita.run" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用Valmis构建AI代理</h2>
+        <p class="original-title">Show HN: Valmis, an OpenClaw alternative built for work, with security in mind</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI代理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Valmis</span></div>
+        <p class="card-content">Valmis是一个AI代理平台，旨在提供安全的AI代理解决方案。它允许开发者连接到100多个商业和生产力集成，并且能够运行在隔离容器中，确保AI永远无法访问API凭证或其他敏感信息。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-30</span>
+          <a class="btn-reddit" href="https://github.com/valmishq/valmis" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用Keyhole共享秘密</h2>
+        <p class="original-title">Show HN: Keyhole – Share secrets with your AI agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">秘密共享</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Keyhole</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Doppler</span></div>
+        <p class="card-content">Keyhole是一个允许开发者共享秘密的平台，旨在提高AI代理的安全性。它允许开发者使用Doppler等工具移除自己从循环中，并且能够提供秘密给AI代理。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-06</span>
+          <a class="btn-reddit" href="https://keyhole.maferland.com" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用TermRover构建终端</h2>
+        <p class="original-title">Show HN: TermRover – a native tmux-first terminal for iOS and Android</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">终端</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">TermRover</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">tmux</span></div>
+        <p class="card-content">TermRover是一个原生tmux-first终端，旨在提供更好的终端体验。它允许开发者使用SSH连接到服务器，并且能够与tmux集成。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-29</span>
+          <a class="btn-reddit" href="https://termrover.sh/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">讨论AI代理的未来</h2>
+        <p class="original-title">Retrieval is not the future of AI – if it was, Google would have won already</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI讨论</div>
+        
+        <p class="card-content">讨论AI代理的未来，认为检索并不是AI的未来。如果检索是AI的未来，谷歌早就已经赢了。讨论者认为还有其他方式可以实现AI的目标，而不需要依赖检索。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-04</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48788520" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">讨论AI代理的应用</h2>
+        <p class="original-title">Ask HN: Why aren't we collaborating on the prompts we give to our AI agents?</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI讨论</div>
+        
+        <p class="card-content">讨论AI代理的应用，认为开发者应该合作共享AI代理的提示。讨论者认为，这样可以提高AI代理的效率和准确性，并且能够减少开发者的工作量。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-08</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48831425" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 14</span>
+          </div>
+        </div>
+        <h2 class="card-title">使用Playground构建沙盒</h2>
+        <p class="original-title">Show HN: Open-source sandbox for your product team</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">沙盒</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Playground</span></div>
+        <p class="card-content">Playground是一个开源沙盒，旨在提供更好的产品开发体验。它允许非技术人员直接在生产代码库上进行原型设计，而不需要开发者的帮助。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-01</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48750459" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">💬 评论</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">讨论AI代理的安全性</h2>
+        <p class="original-title">HN Comment: Show HN: Appaca – AI Workspace for Operators</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI讨论</div>
+        
+        <p class="card-content">讨论AI代理的安全性，认为AI代理的安全性是非常重要的。讨论者认为，AI代理应该运行在隔离容器中，确保AI永远无法访问API凭证或其他敏感信息。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-06-29</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48713578" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
