@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-07-22</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-07-22</div>
+      <div>真实案例 9 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">ChatGPT <b>1</b></span><span class="top-tool-chip">Claude <b>1</b></span><span class="top-tool-chip">Coasty <b>1</b></span><span class="top-tool-chip">Libretto <b>1</b></span><span class="top-tool-chip">Playwright <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 28</span>
+          </div>
+        </div>
+        <h2 class="card-title">Traceforce 公司推出 AI 应用安全监控</h2>
+        <p class="original-title">Launch HN: Traceforce (YC S26) – Company-wide security monitoring for AI apps</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">安全监控</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#10b98120;color:#10b981;border:1px solid #10b98140">ChatGPT</span><span class="tool-chip" style="background:#f9731620;color:#f97316;border:1px solid #f9731640">Claude</span></div>
+        <p class="card-content">Traceforce 提供了对 AI 应用的安全监控，包括 ChatGPT 和 Claude 等应用。他们的系统可以实时监控应用的安全性，并提供详细的报告。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-16</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48937020" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 25</span>
+          </div>
+        </div>
+        <h2 class="card-title">Coasty 推出计算机使用代理 API</h2>
+        <p class="original-title">Launch HN: Coasty (YC S26) – An API for computer-use agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">工作流程自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Coasty</span></div>
+        <p class="card-content">Coasty 推出了一种新的 API，允许开发者创建计算机使用代理。这种代理可以自动完成工作流程，并与 legacy 软件和 web 应用集成。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-15</span>
+          <a class="btn-reddit" href="https://coasty.ai/docs" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 5</span>
+          </div>
+        </div>
+        <h2 class="card-title">Libretto PR 代理自动修复 Playwright 脚本</h2>
+        <p class="original-title">Show HN: Libretto PR agents – Automatically fix failing playwright scripts</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">自动化测试</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Libretto</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Playwright</span></div>
+        <p class="card-content">Libretto PR 代理可以自动修复失败的 Playwright 脚本。开发者只需要添加一行代码到现有的 Playwright 脚本中，代理就会自动打开 GitHub PR 并修复脚本。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-16</span>
+          <a class="btn-reddit" href="https://libretto.sh/debug-agents" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 4</span>
+          </div>
+        </div>
+        <h2 class="card-title">The0 自托管运行时环境支持多语言</h2>
+        <p class="original-title">Show HN: The0 – self-hosted runtime for trading bots, bring your own language</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">交易机器人</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">The0</span></div>
+        <p class="card-content">The0 是一个自托管的运行时环境，支持多种编程语言。开发者可以使用自己的语言创建交易机器人，并在 The0 上运行。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-20</span>
+          <a class="btn-reddit" href="https://github.com/alexanderwanyoike/the0" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Vendo 允许用户添加自定义功能</h2>
+        <p class="original-title">Show HN: Vendo (YC S26) – Let your users add their own features to your product</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">自定义功能</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Vendo</span></div>
+        <p class="card-content">Vendo 允许用户添加自定义功能到产品中。开发者可以使用 Vendo 的 API 创建自定义功能，并将其集成到自己的产品中。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-15</span>
+          <a class="btn-reddit" href="https://github.com/runvendo/vendo" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Bytechef 开源平台支持 AI 代理编排</h2>
+        <p class="original-title">Bytechef open source platform for AI agent orchestration and workflow automation</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 代理编排</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Bytechef</span></div>
+        <p class="card-content">Bytechef 是一个开源平台，支持 AI 代理编排和工作流自动化。开发者可以使用 Bytechef 创建自定义的 AI 代理，并将其集成到自己的工作流中。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-09</span>
+          <a class="btn-reddit" href="https://github.com/bytechefhq/bytechef/tree/master" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Cybara 开源 AI 代理平台</h2>
+        <p class="original-title">Show HN: Cybara – An open-source AI agent platform built with Bun</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 代理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Cybara</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Bun</span></div>
+        <p class="card-content">Cybara 是一个开源的 AI 代理平台，使用 Bun 构建。开发者可以使用 Cybara 创建自定义的 AI 代理，并将其集成到自己的应用中。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-16</span>
+          <a class="btn-reddit" href="https://github.com/metaspartan/cybara" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Call to Control AI 代理通过 Web</h2>
+        <p class="original-title">Show HN: Call to Control AI Agents via the Web</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 代理控制</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Call to Control AI</span></div>
+        <p class="card-content">Call to Control AI 代理允许开发者通过 Web 控制 AI 代理。开发者可以使用 Call to Control AI 代理创建自定义的 AI 代理，并将其集成到自己的应用中。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-13</span>
+          <a class="btn-reddit" href="https://diffforge.ai/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Vektorgeist 平台支持 AI 代理发现和共享</h2>
+        <p class="original-title">Show HN: Vektorgeist- A platform for AI operators and their agent's</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 代理共享</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Vektorgeist</span></div>
+        <p class="card-content">Vektorgeist 是一个平台，支持 AI 代理的发现和共享。开发者可以使用 Vektorgeist 创建自定义的 AI 代理，并将其共享到社区中。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-16</span>
+          <a class="btn-reddit" href="https://vektorgeist.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
