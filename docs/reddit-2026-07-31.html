@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-07-31</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-07-31</div>
+      <div>真实案例 10 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">Tines <b>2</b></span><span class="top-tool-chip">The0 <b>2</b></span><span class="top-tool-chip">Hotcell <b>1</b></span><span class="top-tool-chip">AI <b>1</b></span><span class="top-tool-chip">Dn <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">Tines 3B</h2>
+        <p class="original-title">Show HN: Tines 3B – safe workflow automation for when everyone builds software</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">工作流自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Tines</span></div>
+        <p class="card-content">Tines 3B 是一个新的产品，用于安全的工作流自动化，适用于所有人都在构建软件的场景。它可以帮助团队在 AI 的基础上构建、应用和自动化工作流程。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://www.tines.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 6</span>
+          </div>
+        </div>
+        <h2 class="card-title">The0</h2>
+        <p class="original-title">Show HN: The0 – self-hosted runtime for trading bots, bring your own language</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">交易机器人</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">The0</span></div>
+        <p class="card-content">The0 是一个自托管的运行时环境，用于交易机器人，支持多种编程语言。它可以帮助开发者构建和部署自己的交易机器人。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-20</span>
+          <a class="btn-reddit" href="https://github.com/alexanderwanyoike/the0" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 3</span>
+          </div>
+        </div>
+        <h2 class="card-title">Hotcell</h2>
+        <p class="original-title">Show HN: Hotcell – local sandboxes for AI agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 代理沙盒</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hotcell</span></div>
+        <p class="card-content">Hotcell 是一个本地沙盒环境，用于 AI 代理。它可以帮助开发者在本地机器上创建、暂停和管理沙盒环境。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://github.com/sinameraji/hotcell" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 1</span>
+          </div>
+        </div>
+        <h2 class="card-title">GrowthSpree</h2>
+        <p class="original-title">A B2B marketing agency grew to $1.5M ARR in 6 months by betting on AI</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">营销代理商</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">AI</span></div>
+        <p class="card-content">GrowthSpree 是一家 B2B 营销代理商，通过押注 AI 技术，仅六个月就增长到 150 万美元的年收入。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-20</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48980665" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Dn</h2>
+        <p class="original-title">Show HN: Dn – plan collaboratively, let agents execute</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">协作规划</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Dn</span></div>
+        <p class="card-content">Dn 是一个协作规划工具，允许代理执行任务。它可以帮助团队更好地协作和管理工作流程。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://github.com/chesapeakedev/dn" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Countify</h2>
+        <p class="original-title">Show HN: Countify – Collaborative No-code computer vision for labs</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">计算机视觉</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Countify</span></div>
+        <p class="card-content">Countify 是一个协作的无代码计算机视觉平台，用于实验室。它可以帮助研究人员更好地分析和理解数据。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://www.countifybio.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Hanesu</h2>
+        <p class="original-title">Show HN: Hanesu – An experimental workflow layer for AI coding agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">AI 编码代理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hanesu</span></div>
+        <p class="card-content">Hanesu 是一个实验性的工作流层，用于 AI 编码代理。它可以帮助开发者更好地管理和优化工作流程。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-23</span>
+          <a class="btn-reddit" href="https://github.com/jezmn/hanesu" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Go Micro</h2>
+        <p class="original-title">Show HN: Go Micro – An agent harness and service framework in Go</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">代理和服务</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Go Micro</span></div>
+        <p class="card-content">Go Micro 是一个代理框架和服务框架，使用 Go 语言开发。它可以帮助开发者构建和管理代理和服务。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-18</span>
+          <a class="btn-reddit" href="https://github.com/micro/go-micro" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">💬 评论</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Tines 3B 评论</h2>
+        <p class="original-title">HN Comment: Show HN: Tines 3B – safe workflow automation for when everyone builds software</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">工作流自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Tines</span></div>
+        <p class="card-content">Tines 3B 的开发者回复了用户的评论，回答了关于产品的疑问。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=49084378" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">💬 评论</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">The0 评论</h2>
+        <p class="original-title">HN Comment: Show HN: The0 – self-hosted runtime for trading bots, bring your own language</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">交易机器人</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">The0</span></div>
+        <p class="card-content">用户询问了 The0 的开发者关于交易机器人的问题。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-27</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=49076060" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
