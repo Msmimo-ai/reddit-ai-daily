@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-08-01</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-08-01</div>
+      <div>真实案例 10 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">Palmier Pro <b>1</b></span><span class="top-tool-chip">Tines 3B <b>1</b></span><span class="top-tool-chip">The0 <b>1</b></span><span class="top-tool-chip">AI <b>1</b></span><span class="top-tool-chip">Hanesu <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 39</span>
+          </div>
+        </div>
+        <h2 class="card-title">Palmier Pro 开源视频编辑器</h2>
+        <p class="original-title">Show HN: Palmier Pro – Open-source macOS video editor built for AI</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">视频编辑</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Palmier Pro</span></div>
+        <p class="card-content">Palmier Pro 是一个开源的 macOS 视频编辑器，内置 AI 生成和本地 MCP 服务器，连接到您的 AI 代理。该编辑器提供了多种功能，包括视频编辑、特效和颜色分级等。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-23</span>
+          <a class="btn-reddit" href="https://github.com/palmier-io/palmier-pro" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">Tines 3B 工作流自动化</h2>
+        <p class="original-title">Show HN: Tines 3B – safe workflow automation for when everyone builds software</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">工作流自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Tines 3B</span></div>
+        <p class="card-content">Tines 3B 是一个工作流自动化工具，允许团队使用 AI 代理构建、自动化和管理工作流。该工具提供了安全、可靠和高效的工作流自动化解决方案。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://www.tines.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 6</span>
+          </div>
+        </div>
+        <h2 class="card-title">The0 自托管交易机器人</h2>
+        <p class="original-title">Show HN: The0 – self-hosted runtime for trading bots, bring your own language</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">交易机器人</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">The0</span></div>
+        <p class="card-content">The0 是一个自托管的交易机器人运行时环境，允许用户使用自己的编程语言构建和部署交易机器人。该环境提供了安全、可靠和高效的交易解决方案。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-20</span>
+          <a class="btn-reddit" href="https://github.com/alexanderwanyoike/the0" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 1</span>
+          </div>
+        </div>
+        <h2 class="card-title">A B2B 营销机构使用 AI 增长到 150 万美元</h2>
+        <p class="original-title">A B2B marketing agency grew to $1.5M ARR in 6 months by betting on AI</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">营销自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">AI</span></div>
+        <p class="card-content">一家 B2B 营销机构使用 AI 技术，仅 6 个月就增长到 150 万美元的年收入。该机构使用 AI 构建了一个营销自动化平台，提高了营销效率和效果。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-20</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=48980665" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Hanesu 实验工作流层</h2>
+        <p class="original-title">Show HN: Hanesu – An experimental workflow layer for AI coding agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">工作流自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hanesu</span></div>
+        <p class="card-content">Hanesu 是一个实验性的工作流层，用于 AI 编码代理。该层提供了一个框架，允许 AI 代理构建、自动化和管理工作流。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-23</span>
+          <a class="btn-reddit" href="https://github.com/jezmn/hanesu" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Brainstorm 本地 AI 操作系统</h2>
+        <p class="original-title">Show HN: Brainstorm – a local-first, AI-native OS for knowledge work</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">知识工作</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Brainstorm</span></div>
+        <p class="card-content">Brainstorm 是一个本地优先、AI 原生的操作系统，用于知识工作。该系统提供了一个安全、可靠和高效的知识工作环境。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-31</span>
+          <a class="btn-reddit" href="https://getbrainstorm.online/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Dn 协作计划工具</h2>
+        <p class="original-title">Show HN: Dn – plan collaboratively, let agents execute</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">计划协作</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Dn</span></div>
+        <p class="card-content">Dn 是一个协作计划工具，允许用户与 AI 代理合作构建和执行计划。该工具提供了一个安全、可靠和高效的计划解决方案。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://github.com/chesapeakedev/dn" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Countify 协作计算机视觉平台</h2>
+        <p class="original-title">Show HN: Countify – Collaborative No-code computer vision for labs</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">计算机视觉</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Countify</span></div>
+        <p class="card-content">Countify 是一个协作的无代码计算机视觉平台，用于实验室。该平台提供了一个安全、可靠和高效的计算机视觉解决方案。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-28</span>
+          <a class="btn-reddit" href="https://www.countifybio.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">Vostorq 通信平台</h2>
+        <p class="original-title">Show HN: Vostorq – I built the anti-Slack after working at a Slack-first company</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">通信</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Vostorq</span></div>
+        <p class="card-content">Vostorq 是一个通信平台，旨在取代 Slack。该平台提供了一个安全、可靠和高效的通信解决方案。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-29</span>
+          <a class="btn-reddit" href="https://www.vostorq.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 1</span>
+          </div>
+        </div>
+        <h2 class="card-title">Monorepo 模板</h2>
+        <p class="original-title">Show HN: A monorepo where AI agents can safely build and maintain applications</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">应用程序构建</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Monorepo</span></div>
+        <p class="card-content">Monorepo 模板是一个安全的构建和维护应用程序的环境，用于 AI 代理。该模板提供了一个安全、可靠和高效的应用程序构建解决方案。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-24</span>
+          <a class="btn-reddit" href="https://github.com/louisbrulenaudet/monorepo-template" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
