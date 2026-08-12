@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Reddit AI Agent 日报 · 2026-08-12</title>
+<style>
+  :root {
+    --bg:#f6f7f8; --surface:#fff; --text:#1c1c1c; --text2:#576069;
+    --border:#edeff1; --radius:12px; --shadow:0 1px 6px rgba(0,0,0,0.07);
+    --reddit:#ff4500; --max:480px;
+  }
+  @media(prefers-color-scheme:dark) {
+    :root { --bg:#1a1a1b; --surface:#272729; --text:#d7dadc; --text2:#818384; --border:#343536; --shadow:0 1px 6px rgba(0,0,0,0.3); }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);padding-bottom:48px}
+
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 16px 12px;position:sticky;top:0;z-index:100}
+  .header-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:18px;font-weight:800}
+  .logo span{color:var(--reddit)}
+  .header-right{font-size:12px;color:var(--text2);text-align:right;line-height:1.6}
+  .header-date{font-weight:700;font-size:13px;color:var(--text)}
+
+  .tools-bar{max-width:var(--max);margin:10px auto 0;padding:0 16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tools-label{font-size:11px;color:var(--text2);font-weight:600;margin-right:2px}
+  .top-tool-chip{font-size:11px;background:var(--border);color:var(--text2);padding:3px 8px;border-radius:10px}
+  .top-tool-chip b{color:var(--text);margin-left:3px}
+
+  main{max-width:var(--max);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s}
+  @media(hover:hover){.card:hover{box-shadow:0 3px 16px rgba(0,0,0,0.12)}}
+  .card-reddit-bar{height:3px;background:var(--reddit)}
+  .card-body{padding:12px 14px 14px}
+
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:6px}
+  .card-top-left{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .card-top-right{display:flex;gap:6px;align-items:center;flex-shrink:0}
+  .subreddit{font-size:11px;font-weight:700;color:var(--reddit)}
+  .type-badge{font-size:10px;color:var(--text2);background:var(--border);padding:2px 6px;border-radius:6px}
+  .stat{font-size:11px;color:var(--text2)}
+  .rank{font-size:14px;font-weight:900;color:#f59e0b}
+
+  .card-title{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:4px;letter-spacing:-.2px}
+  .original-title{font-size:11px;color:var(--text2);margin-bottom:8px;font-style:italic;line-height:1.4}
+
+  .use-case-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;margin-bottom:8px}
+  .tools-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .tool-chip{font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+  .card-content{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+
+  .card-footer{display:flex;justify-content:space-between;align-items:center}
+  .pub-meta{font-size:11px;color:var(--text2)}
+  .btn-reddit{font-size:12px;font-weight:700;color:#fff;background:var(--reddit);padding:5px 12px;border-radius:20px;text-decoration:none;white-space:nowrap}
+  .btn-reddit:hover{background:#e03d00}
+
+  .footer{max-width:var(--max);margin:20px auto 0;padding:0 16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🤖 <span>Reddit</span> AI Agent</div>
+    <div class="header-right">
+      <div class="header-date">2026-08-12</div>
+      <div>真实案例 10 条</div>
+    </div>
+  </div>
+  <div class="tools-bar">
+    <span class="tools-label">今日热门工具：</span>
+    <span class="top-tool-chip">Hoplite <b>1</b></span><span class="top-tool-chip">Discovered Materials <b>1</b></span><span class="top-tool-chip">Wienerdog <b>1</b></span><span class="top-tool-chip">Claude Code/Codex <b>1</b></span><span class="top-tool-chip">Clai <b>1</b></span>
+  </div>
+</header>
+
+<main>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#1</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 70</span>
+          </div>
+        </div>
+        <h2 class="card-title">Hoplite 云编码代理</h2>
+        <p class="original-title">Launch HN: Hoplite (YC S26) – Effortlessly deploy cloud coding agents</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">云编码代理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Hoplite</span></div>
+        <p class="card-content">Hoplite 是一个云编码代理平台，允许用户轻松部署云编码代理，具有自动化测试和代码审查等功能。该平台提供了一套工具，帮助用户简化代码测试和部署过程。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-03</span>
+          <a class="btn-reddit" href="https://hoplite.sh" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#2</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 5</span>
+          </div>
+        </div>
+        <h2 class="card-title">Discovered Materials 新材料发现</h2>
+        <p class="original-title">Launch HN: Discovered Materials (YC P26) – AI agents to discover new materials</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">新材料发现</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Discovered Materials</span></div>
+        <p class="card-content">Discovered Materials 是一个使用 AI 代理发现新材料的平台，主要应用于半导体行业。该平台使用 AI 算法来预测和发现新材料的性质和性能。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-12</span>
+          <a class="btn-reddit" href="https://discoveredmaterials.com/research/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            <span class="rank">#3</span>
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">Wienerdog Claude 代码优化</h2>
+        <p class="original-title">Show HN: Wienerdog – memory and self-improving skills for Claude Code/Codex</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">代码优化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Wienerdog</span><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Claude Code/Codex</span></div>
+        <p class="card-content">Wienerdog 是一个为 Claude Code/Codex 提供内存和自我优化技能的工具，允许用户优化代码和提高开发效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-01</span>
+          <a class="btn-reddit" href="https://github.com/wienerdog-ai/wienerdog/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Clai 命令行 AI</h2>
+        <p class="original-title">Show HN: Clai – AI for the command line (stdin → LLM → stdout)</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">命令行 AI</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Clai</span></div>
+        <p class="card-content">Clai 是一个命令行 AI 工具，允许用户使用自然语言输入命令并执行任务，提高命令行操作效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-04</span>
+          <a class="btn-reddit" href="https://github.com/maxrodrigo/clai" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Keystroke 代理自动化</h2>
+        <p class="original-title">Show HN: Keystroke – open sourcing our internal agents and automations platform</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">代理自动化</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Keystroke</span></div>
+        <p class="card-content">Keystroke 是一个代理自动化平台，允许用户构建和部署代理和工作流程，提高自动化效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-03</span>
+          <a class="btn-reddit" href="https://news.ycombinator.com/item?id=49160376" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Brainstorm 知识管理</h2>
+        <p class="original-title">Show HN: Brainstorm – a local-first, AI-native OS for knowledge work</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">知识管理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Brainstorm</span></div>
+        <p class="card-content">Brainstorm 是一个本地优先、AI 原生的知识管理操作系统，允许用户管理和组织知识和任务，提高生产力。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-31</span>
+          <a class="btn-reddit" href="https://getbrainstorm.online/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">SecondState 财务数据分析</h2>
+        <p class="original-title">Show HN: SecondState – what if Hebbia started with raw ERP data?</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">财务数据分析</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">SecondState</span></div>
+        <p class="card-content">SecondState 是一个财务数据分析平台，允许用户分析和处理原始 ERP 数据，提高财务决策效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-11</span>
+          <a class="btn-reddit" href="https://trysecondstate.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 0</span>
+          </div>
+        </div>
+        <h2 class="card-title">Alyph LLM 上下文管理</h2>
+        <p class="original-title">Show HN: Alyph, a manual transmission for LLM context</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">LLM 上下文管理</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Alyph</span></div>
+        <p class="card-content">Alyph 是一个 LLM 上下文管理工具，允许用户管理和优化 LLM 的上下文和历史记录，提高 LLM 的使用效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-07</span>
+          <a class="btn-reddit" href="https://www.alyph.ai/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 8</span>
+          </div>
+        </div>
+        <h2 class="card-title">Armature 代理分析</h2>
+        <p class="original-title">Show HN: Product analytics (and evals) for agent sessions on your MCP</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">代理分析</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Armature</span></div>
+        <p class="card-content">Armature 是一个代理分析平台，允许用户分析和评估代理会话和性能，提高代理的使用效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-08-03</span>
+          <a class="btn-reddit" href="https://armature.tech/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-reddit-bar"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-top-left">
+            <span class="subreddit"></span>
+            <span class="type-badge">📝 帖子</span>
+          </div>
+          <div class="card-top-right">
+            
+            <span class="stat">👍 0</span>
+            <span class="stat">💬 2</span>
+          </div>
+        </div>
+        <h2 class="card-title">Vostorq 通信平台</h2>
+        <p class="original-title">Show HN: Vostorq – I built the anti-Slack after working at a Slack-first company</p>
+        <div class="use-case-badge" style="background:#6b728020;color:#6b7280">通信平台</div>
+        <div class="tools-row"><span class="tool-chip" style="background:#6b728020;color:#6b7280;border:1px solid #6b728040">Vostorq</span></div>
+        <p class="card-content">Vostorq 是一个通信平台，旨在替代 Slack，提供更好的团队协作和沟通功能，提高工作效率。</p>
+        <div class="card-footer">
+          <span class="pub-meta">2026-07-29</span>
+          <a class="btn-reddit" href="https://www.vostorq.com/" target="_blank">查看原帖 →</a>
+        </div>
+      </div>
+    </article>
+</main>
+
+<div class="footer">
+  来源：Reddit · r/ChatGPT · r/ClaudeAI · r/artificial · r/automation 等<br>
+  内容为真实用户分享，由 AI 筛选翻译 · 每天 06:00 自动更新
+</div>
+
+</body>
+</html>
